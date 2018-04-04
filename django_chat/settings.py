@@ -135,4 +135,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), 'static'),]
 
 LOGIN_REDIRECT_URL = '/chat'
-LOGOUT_REDIRECT_URL = '/chat'
+LOGOUT_REDIRECT_URL = '/accounts/login'
