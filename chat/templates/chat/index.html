@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <title>Chat Room</title>
-</head>
-
-<body>
-    Выберите комнату<br/>
-    <input id="room-name-input" type="text" size="100" /><br/>
-    <input id="room-name-submit" type="button" value="Войти" />
-</body>
-<script>
-    document.querySelector('#room-name-input').focus();
-    document.querySelector('#room-name-input').onkeyup = function(e) {
-        if (e.keyCode === 13) {
-            document.querySelector('#room-name-submit').onclick();
-        }
-    };
-
-    document.querySelector('#room-name-submit').onclick = function(e) {
-        var roomName = document.querySelector('#room-name-input').value;
-        window.location.pathname = '/chat/' + roomName + '/';
-    };
-</script>
-
-</html>
+{% extends "base.html" %}
+{% block title %}Тестовое задание (chat) GARPIX{% endblock %}
+{% block header_text %}Выберите комнату{% endblock %}
+{% block content %}
+    <ul class="rooms">
+        {% for room in rooms %}
+            <li class="room-link" data-room-id="">
+                <a href="{% url 'room' room.channel_name %}">{{ room.title }}</a>
+            </li>
+        {% empty %}
+            <p class="empty">Комнат не обнаружено. Их можно создать в <a href="{% url 'admin:index' %}">админке</a>.</p>
+        {% endfor %}
+    </ul>
+    <div id="chats"></div>
+{% endblock %}

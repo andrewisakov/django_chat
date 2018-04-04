@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}GARPIX: Зарегистрируйтесь{% endblock %}
+{% block header_text %}Зарегистрируйтесь{% endblock %}
+
+{% block content %}
+<form action="." method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button>ВОЙТИ</button>
+</form>
+{% endblock %}
